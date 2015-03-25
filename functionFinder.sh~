@@ -9,7 +9,7 @@ rm -f funcNames.txt
 #find all .c and .h files in directory and subdirectories
 for i in `find . -name '*.[ch]'`
 do
-    (grep '^[a-zA-Z0-9\t_][a-z A-Z 0-9 \t_ *]*([a-z A-Z 0-9 \t_ ,*]*)' $i) | awk -F '(' '{print $1}' | awk '{print $2}' | sed 's/^[* ]*//' >> funcNames.txt
+    (grep '^[a-zA-Z0-9\t_][a-z A-Z 0-9 \t_ *]*([a-z A-Z 0-9 \t_ ,*]*)' $i) | awk -F '(' '{print $1}' | sed 's/^[* ]*//' | awk '{print $2}' >> funcNames.txt
 done
 
 #cat funcNames.txt | sort | uniq > funcNames.txt
